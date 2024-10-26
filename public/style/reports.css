@@ -39,3 +39,43 @@ h2{
   font-size: 30px;
   font-weight: bold;
 }
+
+.report{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 1px -1px 9px 4px rgba(34, 60, 80, 0.2);
+}
+
+.delete{
+  background-color: rgb(212, 41, 41);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 5px 20px;
+}
+
+.add{
+  background-color: rgb(5, 108, 192);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 5px 20px;
+  margin-top: 20px;
+}
+
+.input{
+  border-radius: 5px;
+  border: none;
+  background-color: #E7E7E7;
+}
+
+.window{
+  position: absolute;
+  width: 500px;
+  top: 5%;
+  left: 35%;
+  background-color: #ffffff;
+}
