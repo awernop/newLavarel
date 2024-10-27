@@ -21,6 +21,8 @@ class ReportController extends Controller
         $data = $request -> validate([
             'number' => 'string',
             'description' => 'string',
+            'user_id'=>'foreignId',
+            'status_id'=>'foreignId',
         ]);
 
         $report->create($data);
@@ -35,6 +37,8 @@ class ReportController extends Controller
         $data = $request -> validate([
             'number' => 'string',
             'description' => 'string',
+            'user_id'=>'foreignId',
+            'status_id'=>'foreignId',
         ]);
 
         $report->update($data);
