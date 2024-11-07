@@ -16,6 +16,10 @@ class User extends Authenticatable
         return $this->hasMany(Report::class);
     }
 
+    public function fullName(){
+        return $this->surname.' '.$this->name.' '.$this->middlename;
+    }
+
     /**
      * The attributes that are mass assignable.
      *
