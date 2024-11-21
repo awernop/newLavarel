@@ -12,12 +12,18 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    const ADMIN_ROLE='admin';
+
+    public function isAdmin(){
+        return $this->role===self::ADMIN_ROLE;
+    }
+
     public function reports(): HasMany{
         return $this->hasMany(Report::class);
     }
 
     public function fullName(){
-        return $this->surname.' '.$this->name.' '.$this->middlename;
+        return $this->name.' '.$this->middlename.' '.$this->surname;
     }
 
     /**
