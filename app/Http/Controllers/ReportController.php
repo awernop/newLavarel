@@ -3,14 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Report;
-use Illuminate\Http\Request as HttpRequest;
+use App\Models\Status;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class ReportController extends Controller
 {
-    public function index(){
-        $reports=Report::where('user_id', Auth::user()->id)
-        ->get();
-        return view('report.index', compact('reports'));
+    public function index() {
+        $reports = Report::where('user_id', Auth::user()->id)->get();
+        $statuses = Status::all();
+        $userId = Auth::id();
+        return view('report.index', compact('reports', 'userId', 'statuses'));
     }
 
     public function destroy(Report $report){
@@ -18,7 +23,28 @@ class ReportController extends Controller
         return redirect()->back();
     }
 
-    public function store(HttpRequest $request, Report $report){
+    public function create() {
+        $statuses = Status::all();
+        return view('report.create', compact('statuses'));
+    }
+
+    public function store(Request $request): RedirectResponse {
+        $request->validate([
+            'number' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string']
+        ]);
+
+        Report::create([
+            'number' => $request->number,
+            'description' => $request->description,
+            "user_id" => Auth::user()->id,
+            "status_id" => 1,
+        ]);
+
+        return redirect()->route('dashboard');
+    }
+
+    /*public function store(HttpRequest $request, Report $report){
         $data = $request -> validate([
             'number' => 'string',
             'description' => 'string',
@@ -28,21 +54,21 @@ class ReportController extends Controller
 
         $report->create($data);
         return redirect()->back();
-    }
+    }*/
 
     public function show(Report $report){
         return view('report.show', compact('report'));
     }
 
-    public function update(HttpRequest $request, Report $report){
-        $data = $request -> validate([
-            'number' => 'string',
-            'description' => 'string',
-            'user_id'=>'foreignId',
-            'status_id'=>'foreignId',
+    public function update(Request $request) {
+        $request->validate([
+            'status_id' => ['required'],
+            'id' => ['required']
         ]);
 
-        $report->update($data);
+        Report::where('id', $request->id)->update([
+            'status_id' => $request->status_id,
+        ]);
         return redirect()->back();
     }
 }

@@ -10,13 +10,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Report extends Model
 {
     use HasFactory, SoftDeletes;
+    
     protected $guarded=[];
 
     public function user(): BelongsTo{
-        return $this->belongTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function status(): BelongsTo{
-        return $this->belongTo(Status::class);
+        return $this->belongsTo(Status::class);
     }
 }

@@ -18,7 +18,7 @@
       </div>
         @foreach($reports as $report)
           <div class='card'>
-            <p>{{$report->created_at}}</p>
+            <p>{{\Carbon\Carbon::parse($report->created_at)->translatedFormat('j F Y')}}</p>
             <span class='card__number'>{{$report->number}}</span>
             <p class='card__description'>{{$report->description}}</p>
             <p>{{$report->status->name}}</p>
