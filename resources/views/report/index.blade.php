@@ -7,25 +7,19 @@
 
   <div class="py-12">
     <div class="max-w-7x1 mx-auto sm:px-6 lg:px-8">
-      <div class="bg-white overflow-hidden shadow-sm sm:rouded-lg">
-          <div>
-        <form method="POST" action="{{route('reports.store')}}" class='report'>
-          @csrf
-          <input name="number" type="text" placeholder="Номер авто" required class="input">
-          <textarea name="description" placeholder="Описание" class="input"></textarea>
-          <button type="submit" class="add">Добавить</button>
-        </form>
-      </div>
+    <a class="underline text-sm text-blue-700 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('reports.create') }}">
+                {{ __('Создать заявление') }}
+            </a>
         @foreach($reports as $report)
-          <div class='card'>
-            <p>{{\Carbon\Carbon::parse($report->created_at)->translatedFormat('j F Y')}}</p>
+          <div class='div-col border bg-slate-200 rounded-md p-6 mt-4'>
+            <p class="text-sm text-gray-500">{{\Carbon\Carbon::parse($report->created_at)->translatedFormat('j F Y')}}</p>
             <span class='card__number'>{{$report->number}}</span>
             <p class='card__description'>{{$report->description}}</p>
             <p>{{$report->status->name}}</p>
             <form method="POST" action="{{route('reports.destroy', $report->id)}}">
               @method('delete')
               @csrf
-              <input type="submit" value="Удалить" class="delete">
+              <input type="submit" value="Удалить" class="text-sm text-red-600">
             </form>
             <a href="{{route('reports.update', $report->id)}}"></a>
           </div>
