@@ -7,8 +7,8 @@
       @foreach($reports as $report)
           @if($report->status_id===1)
           <div class='div-col border bg-gray-200 rounded-md p-6 mt-4 w-80'>
-            <p class="text-sm text-gray-500">{{\Carbon\Carbon::parse($report->created_at)->translatedFormat('j F Y')}}</p>
-            <p>{{$report->user->fullName()}}</p>
+            <p class="text-xl text-black font-semibold">{{$report->user->fullName()}}</p>
+            <p class="text-sm text-gray-500 pb-2">{{\Carbon\Carbon::parse($report->created_at)->translatedFormat('j F Y')}}</p>
             <span class='text-xl font-semibold'>{{$report->number}}</span>
             <p class='card__description'>{{$report->description}}</p>
             @if($report->status_id==1)
@@ -35,8 +35,8 @@
         @foreach($reports as $report)
         @if($report->status_id!=1)
         <div class='div-col border bg-gray-200 rounded-md p-6 mt-4 w-80'>
-            <p class="text-sm text-gray-500">{{\Carbon\Carbon::parse($report->created_at)->translatedFormat('j F Y')}}</p>
-            <p>{{$report->user->fullName()}}</p>
+        <p class="text-xl text-black font-semibold">{{$report->user->fullName()}}</p>    
+        <p class="text-sm text-gray-500 pb-2">{{\Carbon\Carbon::parse($report->created_at)->translatedFormat('j F Y')}}</p>
             <span class='text-xl font-semibold'>{{$report->number}}</span>
             <p class='card__description'>{{$report->description}}</p>
             @if($report->status_id==1)
