@@ -51,7 +51,7 @@
                 </select>
               </form>
             @else
-              <p class='font-semibold text-xs bg-gray-300 p-2 rounded-xl	mt-3 w-min border-none'>{{$report->status->name}}</p>
+              <p id="statusColor" class='statusColor font-semibold text-xs bg-gray-300 p-2 rounded-xl	mt-3 w-min border-none'>{{$report->status->name}}</p>
             @endif
           </div>
         @endif

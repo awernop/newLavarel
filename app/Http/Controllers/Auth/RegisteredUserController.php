@@ -34,7 +34,7 @@ class RegisteredUserController extends Controller
             'middlename' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
             'tel' => ['required', 'string', 'max:255'],
-            'login'=>['required', 'string', 'max:255', 'unique:' .User::class],
+            'login'=>['required', 'string', 'max:255', 'unique:'.User::class],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', Rules\Password::defaults()],
         ]);

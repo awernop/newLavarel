@@ -1,16 +1,10 @@
 import './bootstrap';
-
+import './statusColor.js';
 import Alpine from 'alpinejs';
+import mask from '@alpinejs/mask'
 import 'flowbite';
-import IMask from 'imask';
 
-/*IMask(
-    document.getElementById('tel'),
-    {
-      mask: '+{7}(000)000-00-00'
-    }
-  )
-*/
 window.Alpine = Alpine;
+Alpine.plugin(mask);
 
 Alpine.start();

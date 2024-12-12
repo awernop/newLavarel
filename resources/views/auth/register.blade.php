@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <h2 class="text-blue-600 text-2xl text-center font-semiboldnpm install imask mb-4">Регистрация</h2>
+    <h2 class="text-blue-700 text-2xl text-center font-semibold imask mb-2">Регистрация</h2>
     <form method="POST" action="{{ route('register') }}" class="flex flex-col gap-2">
         @csrf
         <!-- Surname -->
@@ -40,7 +40,7 @@
         <!-- Phone -->
         <div>
             <x-input-label for="tel" :value="__('Введите телефон')" />
-            <x-text-input id="tel" class="block mt-1 w-full" type="tel" name="tel" :value="old('tel')" required autocomplete="tel" />
+            <x-text-input-tel id="tel" class="block mt-1 w-full" name="tel" :value="old('tel')" required autocomplete="tel" />
             <x-input-error :messages="$errors->get('tel')" class="mt-2" />
         </div>
 

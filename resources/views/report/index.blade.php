@@ -11,7 +11,7 @@
             <p class="text-sm text-gray-500">{{\Carbon\Carbon::parse($report->created_at)->translatedFormat('j F Y')}}</p>
             <span class='text-xl font-semibold	'>{{$report->number}}</span>
             <p>{{$report->description}}</p>
-            <p class='font-semibold text-xs bg-gray-300 p-2 rounded-xl	mt-3 w-min border-none'>{{$report->status->name}}</p>
+            <p id="statusColor" class='font-semibold text-xs bg-gray-300 p-2 rounded-xl	mt-3 w-min border-none statusColor'>{{$report->status->name}}</p>
             <!-- <form method="POST" action="{{route('reports.destroy', $report->id)}}">
               @method('delete')
               @csrf
